@@ -1,7 +1,6 @@
 import PasswordEyeOpen from '../../../assets/icons/PasswordEyeOpen';
 import PasswordEyeClose from '../../../assets/icons/PasswordEyeClose';
 import { Link } from 'react-router-dom';
-import LOGO from '../../../assets/images/logo.svg';
 import { useState, ChangeEvent } from 'react';
 import { IUserRegister } from '../modal';
 
@@ -54,7 +53,7 @@ const LeftPart = () => {
   return (
     <section className='p-14 max-w-xl mx-auto w-full'>
       <nav className='w-fit cursor-pointer'>
-        <img src={LOGO} alt='' />
+        <img src='/public/images/logo.svg' alt='' />
       </nav>
 
       <article className='mt-[15vh]'>
