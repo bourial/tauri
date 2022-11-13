@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LOGO from '../../../assets/images/logo.svg';
 import { useState, ChangeEvent } from 'react';
 import { IUserLogin } from '../modal';
+import '../styles.css';
 
 const LeftPart = () => {
   const [user, setUser] = useState<IUserLogin>({ email: '', password: '' });
@@ -32,18 +33,16 @@ const LeftPart = () => {
 
   return (
     <section className='p-14 max-w-xl mx-auto w-full'>
-      <nav className='w-full'>
-        <Link to='/'>
-          <img src={LOGO} alt='' />
-        </Link>
+      <nav className='w-fit cursor-pointer'>
+        <img src={LOGO} alt='' />
       </nav>
 
       <article className='mt-[15vh]'>
-        <h1 className='text-[28px] font-medium'>Se connecter</h1>
+        <h1 className='text-[28px] font-medium'>Sign in to XXX</h1>
         <p className='text-sm text-gray-500 mt-5 mb-8'>
-          Pas encore de compte ?{' '}
+          Don't have account yet ?{' '}
           <Link to='/register' className='text-[#62C247] font-medium'>
-            S’inscrire
+            Register
           </Link>
         </p>
         <input
@@ -53,7 +52,7 @@ const LeftPart = () => {
           onChange={handleInputChange}
           className='w-full h-11 bg-[#f4f4f5] pl-4 rounded-md placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-[#62C247]'
         />
-        <div className='relative my-5'>
+        <div className='relative mt-5'>
           <input
             type={showPass ? 'text' : 'password'}
             placeholder='Password'
@@ -71,20 +70,24 @@ const LeftPart = () => {
       </article>
 
       {/* erros hondler */}
-      <article
-        className={`w-fit bg-red-500 text-white rounded-lg text-xs font-medium px-4 py-1 mt-1 ${
-          error ? 'visible' : 'invisible'
-        }`}
-      >
-        {error}
-      </article>
+      {error && (
+        <article
+          className={`w-fit bg-red-500 text-white rounded-md text-xs font-medium px-4 py-1 mt-3`}
+        >
+          {error}
+        </article>
+      )}
 
       <article className='text-sm flex justify-between items-center my-8'>
-        <div>
-          <p>Rester connecter</p>
+        <div className='flex items-center space-x-2'>
+          <input
+            type='checkbox'
+            className='form-check-input appearance-none h-[18px] w-[18px] border border-gray-400 rounded-[4px] bg-white checked:bg-[#62C247] focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain cursor-pointer'
+          />
+          <p>Stay connected</p>
         </div>
         <div className='cursor-pointer hover:underline text-[13px]'>
-          Mot de passe oublié ?
+          Forgot your password ?
         </div>
       </article>
 
@@ -92,7 +95,7 @@ const LeftPart = () => {
         onClick={handleSubmit}
         className='h-12 w-full block bg-[#62C247] text-white text-sm font-medium rounded-md active:scale-95 transition-all duration-150 mt-12'
       >
-        Continuer
+        Continue
       </button>
     </section>
   );
